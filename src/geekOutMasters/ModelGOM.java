@@ -1,137 +1,57 @@
 package geekOutMasters;
 
+/**
+ * ModelGOM apply Geek out Masters rules.
+ *
+ * @author Leidy Estefania Parra Concha
+ * Juan Senastian Ospina Maya
+ * @version v1.0.0 date 15/01/2022
+ */
 public class ModelGOM {
 
-    /**
-     * ModelCraps apply craps rules.
-     * estado = 1 natural winner
-     * estado = 2 craps looser
-     * estado = 3 establish punto
-     * estado = 4 punto winner
-     * estado = 5 punto looser
-     * @author Juan Senastian Ospina Maya
-     * @version v1.0.0 date 08/12/2021
-     */
-    public class ModelCraps {
-
-        private Dado dado1, dado2;
+        private Dado dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8, dado9, dado10;
         private int[] caras;
-        private int tiro, punto, estado, flag;
-        private String[] estadoToString;
+        private int flag;
 
-        public ModelCraps(){
+
+        public ModelGOM(){
 
             dado1 = new Dado();
             dado2 = new Dado();
-            caras = new int[2];
-            estadoToString = new String[2];
+            dado3 = new Dado();
+            dado4 = new Dado();
+            dado5 = new Dado();
+            dado6 = new Dado();
+            dado7 = new Dado();
+            dado8 = new Dado();
+            dado9 = new Dado();
+            dado10 = new Dado();
+
+            caras = new int[10];
             flag = 0;
 
         }
 
-        /**
-         * Establish the tiro value according to each dice
-         */
-        public void calcularTiro(){
+    /**
+     *
+     */
+    public void calcularCara(){
 
-            caras[0] = dado1.getCara();
-            caras[1] =  dado2.getCara();
-            tiro = caras[0] + caras[1];
+        caras[0] = dado1.getCara();
+        caras[1] = dado2.getCara();
+        caras[2] = dado3.getCara();
+        caras[3] = dado4.getCara();
+        caras[4] = dado5.getCara();
+        caras[5] = dado6.getCara();
+        caras[6] = dado7.getCara();
+        caras[7] = dado8.getCara();
+        caras[8] = dado9.getCara();
+        caras[9] = dado10.getCara();
 
-        }
+    }
 
-        /**
-         * Establish game state according to estado attribute value
-         * estado = 1 natural winner
-         * estado = 2 craps looser
-         * estado = 3 establish punto
-         */
-        public void determinarJuego(){
 
-            if(flag == 0){
-                if(tiro == 7 || tiro == 11){
-                    estado = 1;
-                }else {
-                    if(tiro == 2 || tiro == 3 || tiro == 12){
-                        estado = 2;
-                    }else {
-                        estado = 3;
-                        punto = tiro;
-                        flag = 1;
-                    }
-                }
-            }else {
-
-                rondaPunto();
-            }
-        }
-
-        /**
-         * Establish game state according to estado attribute value
-         * estado = 4 punto winner
-         * estado = 5 punto looser
-         */
-        private void rondaPunto() {
-
-            if(tiro == punto){
-                estado = 4;
-                flag = 0;
-            }else {
-                if(tiro == 7){
-                    estado = 5;
-                    flag = 0;
-
-                }else {
-                    estado = 6;
-                }
-            }
-
-        }
-
-        public int[] getCaras() {
-            return caras;
-        }
-
-        public int getTiro() {
-            return tiro;
-        }
-
-        public int getPunto() {
-            return punto;
-        }
-
-        /**
-         * Establish message game state according to estado attribute value
-         * @return Message for view class
-         */
-        public String[] getEstadoToString() {
-            switch(estado){
-                case 1: estadoToString[0] = "Tiro de salida = " + tiro;
-                    estadoToString[1] = "Sacaste Natural, has ganado!!!";
-                    break;
-                case 2: estadoToString[0] = "Tiro de salida = " + tiro;
-                    estadoToString[1] = "Sacaste Craps, has perdido!!!";
-                    break;
-                case 3: estadoToString[0] = "Tiro de salida = " + tiro + "\nPunto = " + punto;
-                    estadoToString[1] = "Estableciste punto en " + punto + ", debes seguir lanzando!!!" +
-                            "\nPero si sacas 7 antes que "+ punto +" perderas";
-                    break;
-                case 4: estadoToString[0] = "Tiro de salida = " + punto + "\nPunto = " + punto
-                        +"\nEl valor del nuevo tiro = " + tiro;
-                    estadoToString[1] = "Volviste a sacar " + punto + " has ganado!!!";
-                    break;
-                case 5: estadoToString[0] = "Tiro de salida = " + punto + "\nPunto = " + punto
-                        +"\nEl valor del nuevo tiro = " + tiro;
-                    estadoToString[1] = "Sacaste 7 antes que " + punto + ", has perdido!!!";
-                    break;
-                case 6: estadoToString[0] = "Tiro de salida = " + punto + "\nPunto = " + punto
-                        +"\nEl valor del nuevo tiro = " + tiro;
-                    estadoToString[1] = "Estableciste punto en " + punto + ", debes seguir lanzando!!!" +
-                            "\nPero si sacas 7 antes que "+ punto +" perderas";
-                    break;
-
-            }
-            return estadoToString;
-        }
+    public int[] getCaras() {
+        return caras;
     }
 }

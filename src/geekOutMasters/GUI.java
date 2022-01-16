@@ -2,6 +2,8 @@ package geekOutMasters;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * This class is used as View of Geek out masters
@@ -11,23 +13,20 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
-    private static final String MENSAJE_INICIO="Bienvenido a Craps \n"
+    private static final String MENSAJE_AYUDA="Bienvenido a Geek Out Masters \n"
             +"Oprime el boton lanzar para iniciar el juego"
-            +"\nSi tu tiro de salida es 7 u 11 ganas con Natural"
-            +"\nSi tu tiro de salida es 2, 3 u 11 pierdes con Craps"
-            +"\nSi sacas cualquier otro valor estableceras el Punto"
-            +"\nEstado en punto podras seguir lanzando los dados"
-            +"\npero ahora ganaras si vueles a sacar el valor de punto"
-            +"\nsin que previamente hayas sacado 7";
+            +"\nBasarse en el panel de dados activos para ver la disponibilidad"
+            +"\nde dados que tienes para jugar.";
 
     private Header headerProject;
     private JLabel dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8, dado9, dado10;
     private JButton ayuda,salir,lanzar, limpiar;
     private JPanel panelDadosInactivos, panelDadosUtilizados, panelDadosActivos;
-    private ImageIcon imageDado;
-    private JTextArea mensajeSalida, resultadosDados;
-    //private Escucha escucha;
+    private ImageIcon imageDado, imageReglas;
+    private JTextArea tablero;
+    private Escucha escucha;
     private ModelGOM modelGOM;
+    private Boolean flag = false;
 
     /**
      * Constructor of GUI class
@@ -55,7 +54,7 @@ public class GUI extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
 
         //Create Listener Object and Control Object
-        //escucha = new Escucha();
+        escucha = new Escucha();
         modelGOM = new ModelGOM();
 
         //Set up JComponents
@@ -67,7 +66,7 @@ public class GUI extends JFrame {
         this.add(headerProject,constraints);
 
         ayuda = new JButton(" ? ");
-        //ayuda.addActionListener();
+        ayuda.addMouseListener(escucha);
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -76,7 +75,7 @@ public class GUI extends JFrame {
         this.add(ayuda,constraints);
 
         salir = new JButton(" Salir ");
-        //salir.addActionListener();
+        salir.addMouseListener(escucha);
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -86,19 +85,31 @@ public class GUI extends JFrame {
 
         imageDado = new ImageIcon(getClass().getResource("/resources/dado.png"));
         dado1 = new JLabel(imageDado);
+
         dado2 = new JLabel(imageDado);
+
         dado3 = new JLabel(imageDado);
+
         dado4 = new JLabel(imageDado);
+
         dado5 = new JLabel(imageDado);
+
         dado6 = new JLabel(imageDado);
+
         dado7 = new JLabel(imageDado);
+
         dado8 = new JLabel(imageDado);
+
         dado9 = new JLabel(imageDado);
+
         dado10 = new JLabel(imageDado);
+
+
+        imageReglas = new ImageIcon(getClass().getResource("/resources/reglas.png"));
 
         //panel 1
         panelDadosInactivos = new JPanel();
-        panelDadosInactivos.setPreferredSize(new Dimension(400,220));
+        panelDadosInactivos.setPreferredSize(new Dimension(500,250));
         panelDadosInactivos.setBorder(BorderFactory.createTitledBorder(" Dados Inactivos "));
         panelDadosInactivos.add(dado1);
         panelDadosInactivos.add(dado2);
@@ -112,7 +123,7 @@ public class GUI extends JFrame {
 
         //panel 2
         panelDadosUtilizados = new JPanel();
-        panelDadosUtilizados.setPreferredSize(new Dimension(400,220));
+        panelDadosUtilizados.setPreferredSize(new Dimension(500,250));
         panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder(" Dados Utilizados "));
         constraints.gridx = 1;
         constraints.gridy = 2;
@@ -123,7 +134,7 @@ public class GUI extends JFrame {
 
         //panel 3
         panelDadosActivos = new JPanel();
-        panelDadosActivos.setPreferredSize(new Dimension(400,150));
+        panelDadosActivos.setPreferredSize(new Dimension(500,150));
         panelDadosActivos.setBorder(BorderFactory.createTitledBorder(" Dados Activos "));
         panelDadosActivos.add(dado4);
         panelDadosActivos.add(dado5);
@@ -140,20 +151,20 @@ public class GUI extends JFrame {
         this.add(panelDadosActivos,constraints);
 
 
-        mensajeSalida = new JTextArea(4,29);
-        mensajeSalida.setText(" Usa el boton (?) para ver las reglas del juego ");
-        mensajeSalida.setBorder(BorderFactory.createTitledBorder(" Tablero "));
-        mensajeSalida.setEditable(false);
+        tablero = new JTextArea(4,29);
+        tablero.setText(" Usa el boton (?) para ver las reglas del juego ");
+        tablero.setBorder(BorderFactory.createTitledBorder(" Tablero "));
+        tablero.setEditable(false);
         constraints.gridx = 0;
         constraints.gridy = 5;
         constraints.gridwidth = 1;
         constraints.gridheight = 2;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.CENTER;
-        this.add(mensajeSalida,constraints);
+        this.add(tablero,constraints);
 
-        lanzar = new JButton("lanzar");
-        //lanzar.addActionListener();
+        lanzar = new JButton(" lanzar ");
+        lanzar.addMouseListener(escucha);
         constraints.gridx = 1;
         constraints.gridy = 4;
         constraints.gridwidth = 2;
@@ -161,8 +172,8 @@ public class GUI extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         this.add(lanzar,constraints);
 
-        limpiar = new JButton("limpiar");
-        //limpiar.addActionListener();
+        limpiar = new JButton(" limpiar ");
+        limpiar.addMouseListener(escucha);
         constraints.gridx = 1;
         constraints.gridy = 5;
         constraints.gridwidth = 2;
@@ -183,6 +194,122 @@ public class GUI extends JFrame {
         });
     }
 
+    private class Escucha implements MouseListener {
 
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            if(e.getSource() == ayuda){
+
+                JOptionPane.showMessageDialog(null,MENSAJE_AYUDA,"Ayuda",JOptionPane.PLAIN_MESSAGE,imageReglas);
+
+            }else if(e.getSource() == lanzar) {
+
+
+                modelGOM.calcularCara();
+                int[] caras = modelGOM.getCaras();
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[0] +".png"));
+                dado1.setIcon(imageDado);
+
+
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[1] +".png"));
+                dado2.setIcon(imageDado);
+
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[2] +".png"));
+                dado3.setIcon(imageDado);
+
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[3] +".png"));
+                dado4.setIcon(imageDado);
+                dado4.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[4] +".png"));
+                dado5.setIcon(imageDado);
+                dado5.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[5] +".png"));
+                dado6.setIcon(imageDado);
+                dado6.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[6] +".png"));
+                dado7.setIcon(imageDado);
+                dado7.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[7] +".png"));
+                dado8.setIcon(imageDado);
+                dado8.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[8] +".png"));
+                dado9.setIcon(imageDado);
+                dado9.addMouseListener(escucha);
+
+                imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[9] +".png"));
+                dado10.setIcon(imageDado);
+                dado10.addMouseListener(escucha);
+
+                revalidate();
+                repaint();
+
+            }else if(e.getSource() == limpiar) {
+
+
+                revalidate();
+                repaint();
+
+            }else if(e.getSource() == salir) {
+
+                System.exit(0);
+
+            }
+
+            if(e.getSource() == dado4){
+                panelDadosActivos.remove(dado4);
+                panelDadosUtilizados.add(dado4);
+            }else if(e.getSource() == dado5){
+                panelDadosActivos.remove(dado5);
+                panelDadosUtilizados.add(dado5);
+            }else if(e.getSource() == dado6){
+                panelDadosActivos.remove(dado6);
+                panelDadosUtilizados.add(dado6);
+            }else if(e.getSource() == dado7){
+                panelDadosActivos.remove(dado7);
+                panelDadosUtilizados.add(dado7);
+            }else if(e.getSource() == dado8){
+                panelDadosActivos.remove(dado8);
+                panelDadosUtilizados.add(dado8);
+            }else if(e.getSource() == dado9){
+                panelDadosActivos.remove(dado9);
+                panelDadosUtilizados.add(dado9);
+            }else if(e.getSource() == dado10){
+                panelDadosActivos.remove(dado10);
+                panelDadosUtilizados.add(dado10);
+            }
+            revalidate();
+            repaint();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+    }
 }
 

@@ -2,6 +2,7 @@ package geekOutMasters;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -27,6 +28,7 @@ public class GUI extends JFrame {
     private Escucha escucha;
     private ModelGOM modelGOM;
     private Boolean flag = false;
+    private int[] caras;
 
     /**
      * Constructor of GUI class
@@ -194,7 +196,7 @@ public class GUI extends JFrame {
         });
     }
 
-    private class Escucha implements MouseListener {
+    private class Escucha extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -207,10 +209,11 @@ public class GUI extends JFrame {
 
 
                 modelGOM.calcularCara();
-                int[] caras = modelGOM.getCaras();
+
+                caras = modelGOM.getCaras();
+
                 imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[0] +".png"));
                 dado1.setIcon(imageDado);
-
 
 
                 imageDado = new ImageIcon(getClass().getResource("/resources/"+ caras[1] +".png"));
@@ -264,50 +267,268 @@ public class GUI extends JFrame {
 
             }
 
-            if(e.getSource() == dado4){
-                panelDadosActivos.remove(dado4);
-                panelDadosUtilizados.add(dado4);
-            }else if(e.getSource() == dado5){
+           if(e.getSource() == dado4){
+
+               panelDadosActivos.remove(dado4);
+               panelDadosUtilizados.add(dado4);
+               dado4.removeMouseListener(escucha);
+
+               //Imagen Mupple
+               if(caras[3] == 1){
+                   JOptionPane.showMessageDialog(null,"Mupple");
+
+               }
+               //Imagen Cohete
+               else if(caras[3] == 2){
+                   JOptionPane.showMessageDialog(null,"Cohete");
+
+               }
+               //Imagen Dragón
+               else if(caras[3] == 3){
+                   JOptionPane.showMessageDialog(null,"Dragón");
+
+               }
+               //Imagen SuperHeroe
+               else if(caras[3] == 4){
+                   JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+               }
+               //Imagen Corazón
+               else if(caras[3] == 5){
+                   JOptionPane.showMessageDialog(null,"Corazón");
+
+               }
+               //Imagen 42
+               else if(caras[3] == 6){
+                   JOptionPane.showMessageDialog(null,"42");
+
+               }
+           }
+            if(e.getSource() == dado5){
+
                 panelDadosActivos.remove(dado5);
                 panelDadosUtilizados.add(dado5);
-            }else if(e.getSource() == dado6){
+                dado5.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[4] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[4] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[4] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[4] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[4] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[4] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
+            }
+            if(e.getSource() == dado6){
+
                 panelDadosActivos.remove(dado6);
                 panelDadosUtilizados.add(dado6);
-            }else if(e.getSource() == dado7){
+                dado6.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[5] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[5] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[5] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[5] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[5] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[5] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
+            }
+            if(e.getSource() == dado7){
+
                 panelDadosActivos.remove(dado7);
                 panelDadosUtilizados.add(dado7);
-            }else if(e.getSource() == dado8){
+                dado7.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[6] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[6] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[6] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[6] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[6] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[6] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
+            }
+            if(e.getSource() == dado8){
+
                 panelDadosActivos.remove(dado8);
                 panelDadosUtilizados.add(dado8);
-            }else if(e.getSource() == dado9){
+                dado8.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[7] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[7] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[7] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[7] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[7] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[7] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
+            }
+            if(e.getSource() == dado9){
+
                 panelDadosActivos.remove(dado9);
                 panelDadosUtilizados.add(dado9);
-            }else if(e.getSource() == dado10){
+                dado9.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[8] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[8] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[8] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[8] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[8] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[8] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
+            }
+            if(e.getSource() == dado10){
+
                 panelDadosActivos.remove(dado10);
                 panelDadosUtilizados.add(dado10);
+                dado10.removeMouseListener(escucha);
+
+                //Imagen Mupple
+                if(caras[9] == 1){
+                    JOptionPane.showMessageDialog(null,"Mupple");
+
+                }
+                //Imagen Cohete
+                else if(caras[9] == 2){
+                    JOptionPane.showMessageDialog(null,"Cohete");
+
+                }
+                //Imagen Dragón
+                else if(caras[9] == 3){
+                    JOptionPane.showMessageDialog(null,"Dragón");
+
+                }
+                //Imagen SuperHeroe
+                else if(caras[9] == 4){
+                    JOptionPane.showMessageDialog(null,"SuperHeroe");
+
+                }
+                //Imagen Corazón
+                else if(caras[9] == 5){
+                    JOptionPane.showMessageDialog(null,"Corazón");
+
+                }
+                //Imagen 42
+                else if(caras[9] == 6){
+                    JOptionPane.showMessageDialog(null,"42");
+
+                }
             }
+
             revalidate();
             repaint();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
         }
 
     }

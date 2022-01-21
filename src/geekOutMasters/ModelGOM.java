@@ -52,6 +52,7 @@ public class ModelGOM {
 
 
     public int[] getCaras() {
+        
         return caras;
     }
 }

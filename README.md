@@ -1,6 +1,11 @@
-# guiTemplate
-Proyecto para usar como "project Template" en Intellij. 
-Universidad del Valle
-Escuela de Ingeniería de Sistemas y Computación
-Asignaturas: Fundamentos de Programación Orientada a Eventos / Programación Interactiva
-Profesora: Paola-J. Rodríguez-C.
+# Geek out Master
+Videojuego de estrategia basado en un juego  de mesa cuyo objetivo es sacar el mayor puntaje al finalizar cada ronda.
+Su modo de juego se basa en el lanzamiento de dados y suerte.
+
+Juego diseñado por:
+
+- Leidy Estefania Parra Concha
+
+- Juan Sebastian Ospina Maya
+
+Estudiantes de Tecnologia en sistemas de informacion en la Universidad del Valle, Cali, Colombia.

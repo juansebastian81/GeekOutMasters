@@ -277,6 +277,8 @@ public class GUI extends JFrame {
                if(caras[3] == 1){
                    JOptionPane.showMessageDialog(null,"Mupple");
 
+
+
                }
                //Imagen Cohete
                else if(caras[3] == 2){

@@ -50,9 +50,39 @@ public class ModelGOM {
 
     }
 
-
     public int[] getCaras() {
         
         return caras;
+    }
+
+    public void poderMupple(){
+
+
+    }
+
+    public void poderCohete(){
+
+
+    }
+
+    public void poderDragon(){
+
+
+    }
+
+    public void poderSuperHeroe(){
+
+
+
+    }
+
+    public void poderCorazon(){
+
+
+    }
+
+    public void poder42(){
+
+
     }
 }

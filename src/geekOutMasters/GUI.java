@@ -31,6 +31,7 @@ public class GUI extends JFrame {
     private ModelGOM modelGOM;
     // private Boolean flag = false;
     private int[] caras;
+    private int i = 1;
 
     /**
      * Constructor of GUI class
@@ -262,6 +263,8 @@ public class GUI extends JFrame {
             } else if (e.getSource() == limpiar) {
 
 
+                GUI gui = new GUI();
+
                 revalidate();
                 repaint();
 
@@ -304,6 +307,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[3] == 3) {
+
+                    panelDadosActivos.remove(dado4);
+                    panelDadosUtilizados.add(dado4);
+                    dado4.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -331,31 +339,20 @@ public class GUI extends JFrame {
                     panelDadosUtilizados.add(dado4);
                     dado4.removeMouseListener(escucha);
 
-                    if (e.getSource() == dado1) {
-
-                        panelDadosInactivos.remove(dado1);
-                        panelDadosActivos.add(dado1);
-
-                        JOptionPane.showMessageDialog(null, "dado1");
-
-                    } else if (e.getSource() == dado2) {
-
-                        JOptionPane.showMessageDialog(null, "dado2");
-
-                    } else if (e.getSource() == dado3) {
-
-                        JOptionPane.showMessageDialog(null, "dado3");
-
-                    }
 
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
                 }
                 //Imagen 42
                 else if (caras[3] == 6) {
+
+                    panelDadosActivos.remove(dado4);
+                    panelDadosUtilizados.add(dado4);
+                    dado4.removeMouseListener(escucha);
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
                     } else {
@@ -368,6 +365,7 @@ public class GUI extends JFrame {
 
                 //Imagen Mupple
                 if (caras[4] == 1) {
+
 
                     panelDadosActivos.remove(dado5);
                     panelDadosUtilizados.add(dado5);
@@ -394,6 +392,9 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[4] == 3) {
+                    panelDadosActivos.remove(dado5);
+                    panelDadosUtilizados.add(dado5);
+                    dado5.removeMouseListener(escucha);
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -422,12 +423,18 @@ public class GUI extends JFrame {
 
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
                 }
                 //Imagen 42
                 else if (caras[4] == 6) {
+
+                    panelDadosActivos.remove(dado5);
+                    panelDadosUtilizados.add(dado5);
+                    dado5.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
 
@@ -467,6 +474,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[5] == 3) {
+
+                    panelDadosActivos.remove(dado6);
+                    panelDadosUtilizados.add(dado6);
+                    dado6.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -495,12 +507,18 @@ public class GUI extends JFrame {
 
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
                 }
                 //Imagen 42
                 else if (caras[5] == 6) {
+
+                    panelDadosActivos.remove(dado6);
+                    panelDadosUtilizados.add(dado6);
+                    dado6.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
                     } else {
@@ -539,6 +557,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[6] == 3) {
+
+                    panelDadosActivos.remove(dado7);
+                    panelDadosUtilizados.add(dado7);
+                    dado7.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -567,6 +590,7 @@ public class GUI extends JFrame {
 
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
@@ -574,6 +598,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen 42
                 else if (caras[6] == 6) {
+
+                    panelDadosActivos.remove(dado7);
+                    panelDadosUtilizados.add(dado7);
+                    dado7.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
                     } else {
@@ -615,6 +644,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[7] == 3) {
+
+                    panelDadosActivos.remove(dado8);
+                    panelDadosUtilizados.add(dado8);
+                    dado8.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -645,7 +679,9 @@ public class GUI extends JFrame {
                     dado8.removeMouseListener(escucha);
 
                     if (modelGOM.isFlag() == false) {
+
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
@@ -653,6 +689,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen 42
                 else if (caras[7] == 6) {
+
+                    panelDadosActivos.remove(dado8);
+                    panelDadosUtilizados.add(dado8);
+                    dado8.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
 
@@ -694,6 +735,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[8] == 3) {
+
+                    panelDadosActivos.remove(dado9);
+                    panelDadosUtilizados.add(dado9);
+                    dado9.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -723,13 +769,20 @@ public class GUI extends JFrame {
                     dado9.removeMouseListener(escucha);
 
                     if (modelGOM.isFlag() == false) {
+
                         modelGOM.poderCorazon(true);
+                        modelGOM.setFlag(false);
                     } else {
                         modelGOM.setFlag(false);
                     }
                 }
                 //Imagen 42
                 else if (caras[8] == 6) {
+
+                    panelDadosActivos.remove(dado9);
+                    panelDadosUtilizados.add(dado9);
+                    dado9.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
 
@@ -769,6 +822,11 @@ public class GUI extends JFrame {
                 }
                 //Imagen Dragón
                 else if (caras[9] == 3) {
+
+                    panelDadosActivos.remove(dado10);
+                    panelDadosUtilizados.add(dado10);
+                    dado10.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poderDragon(true);
                     } else {
@@ -790,19 +848,23 @@ public class GUI extends JFrame {
                 }
                 //Imagen Corazón
                 else if (caras[9] == 5) {
-
+                    if (modelGOM.isFlag() == false) {
                     panelDadosActivos.remove(dado10);
                     panelDadosUtilizados.add(dado10);
                     dado10.removeMouseListener(escucha);
+                    modelGOM.poderCorazon(true);
 
-                    if (modelGOM.isFlag() == false) {
-                        modelGOM.poderCorazon(true);
                     } else {
                         modelGOM.setFlag(false);
                     }
                 }
                 //Imagen 42
                 else if (caras[9] == 6) {
+
+                    panelDadosActivos.remove(dado10);
+                    panelDadosUtilizados.add(dado10);
+                    dado10.removeMouseListener(escucha);
+
                     if (modelGOM.isFlag() == false) {
                         modelGOM.poder42(true);
 
@@ -815,7 +877,6 @@ public class GUI extends JFrame {
             revalidate();
             repaint();
         }
-
 
     }
 

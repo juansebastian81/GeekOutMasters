@@ -17,7 +17,7 @@ public class ModelGOM {
     private boolean flag = false;
     private ImageIcon imageDado, imageDragon, image42;
     private Random random;
-    private int nuevaCara;
+    private int nuevaCara, i;
     
 
 
@@ -136,5 +136,13 @@ public class ModelGOM {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
     }
 }
